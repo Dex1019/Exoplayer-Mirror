@@ -1,20 +1,21 @@
-package com.example.dex.videoplayer;
+package com.example.dex.videoplayer.model;
 
 /**
  * Created by dex on 11/4/18.
  */
 
-public class FolderListDetail {
+public class ListItemDetail {
+
     boolean file_selected;
     private String title;
     private String thumbnail;
     private String abs_file_path;
 
-    public FolderListDetail() {
+    public ListItemDetail() {
 
     }
 
-    public FolderListDetail(String title, String thumbnail, String abs_file_path, boolean file_selected) {
+    public ListItemDetail(String title, String thumbnail, String abs_file_path, boolean file_selected) {
         this.title = title;
         this.thumbnail = thumbnail;
         this.file_selected = file_selected;

@@ -1,4 +1,4 @@
-package com.example.dex.videoplayer;
+package com.example.dex.videoplayer.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,43 +10,39 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.dex.videoplayer.R;
+import com.example.dex.videoplayer.activities.VideoPlayerActivity;
+import com.example.dex.videoplayer.model.ListItemDetail;
 
 import java.util.ArrayList;
 
-/**
- * Created by dex on 11/4/18.
- */
-
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
-
+public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.MyViewHolder> {
     Context context;
-    ArrayList<FolderListDetail> mlistItems;
+    ArrayList<ListItemDetail> mlistItems;
 
 
-    public ListAdapter(Context context, ArrayList<FolderListDetail> listItems) {
+    public FolderAdapter(Context context, ArrayList<ListItemDetail> listItems) {
         this.context = context;
         this.mlistItems = listItems;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FolderAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View view = inflater.inflate(R.layout.detail_item_list, parent, false);
-
-        return new MyViewHolder(view);
+        return new FolderAdapter.MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        FolderListDetail mlistDetail = mlistItems.get(position);
+        ListItemDetail mlistDetail = mlistItems.get(position);
 
         String thumb_url = mlistDetail.getThumbnail();
         String file_title = mlistDetail.getTitle();
-
 
         Glide.with(context)
                 .load(thumb_url)
@@ -84,7 +80,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
             if (position != RecyclerView.NO_POSITION) {
 
 
-                FolderListDetail listDetail = mlistItems.get(position);
+                ListItemDetail listDetail = mlistItems.get(position);
                 String abs_file_path = listDetail.getAbs_file_path();
 
                 Intent videoIntent = new Intent(context, VideoPlayerActivity.class);
@@ -92,8 +88,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
                 context.startActivity(videoIntent);
 
             }
-
-
         }
     }
 }

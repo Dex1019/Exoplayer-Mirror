@@ -1,4 +1,4 @@
-package com.example.dex.videoplayer;
+package com.example.dex.videoplayer.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.example.dex.videoplayer.R;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
@@ -22,10 +23,12 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 
 public class VideoPlayerActivity extends AppCompatActivity {
-    private static final String TAG = "VideoPlayerActivity";
+
+    private static final String TAG = VideoPlayerActivity.class.getSimpleName();
 
     SimpleExoPlayerView exoPlayerView;
     SimpleExoPlayer exoPlayer;
+
     private View decorView;
     private int uiImmersiveOptions;
 
@@ -96,7 +99,6 @@ public class VideoPlayerActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-
         exoPlayer.release();
     }
 
